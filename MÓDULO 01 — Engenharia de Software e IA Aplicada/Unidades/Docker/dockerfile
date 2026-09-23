@@ -1,0 +1,23 @@
+# Define a imagem base (SO + runtime). Neste caso, Python 3.9 versão slim.
+FROM python:3.9-slim 
+
+# Define o diretório de trabalho dentro do container. 
+#Todos os comandos seguintes executam dentro deste diretório.
+WORKDIR /app 
+
+# Copia o arquivo requirements.txt da máquina host para o container.
+COPY requirements.txt . 
+
+# Executa um comando durante a construção da imagem. 
+#Neste caso, instala as dependências Python.
+RUN pip install -r requirements.txt 
+
+# Copia todos os arquivos do diretório atual (host) para o diretório /app (container).
+COPY . . 
+
+# Documenta qual porta o container escuta. 
+# Não mapeia automaticamente, apenas serve como documentação.
+EXPOSE 5000 
+
+# Define o comando padrão a ser executado quando o container inicia.
+CMD ["python", "app.py"]
