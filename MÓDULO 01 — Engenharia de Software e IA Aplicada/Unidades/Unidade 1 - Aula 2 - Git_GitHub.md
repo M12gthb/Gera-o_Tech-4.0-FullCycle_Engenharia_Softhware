@@ -50,53 +50,50 @@ Repositório (histórico)
 
 **ADICIONANDO ARQUIVOS**
  ``
-# Adicionar arquivo específico
+**Adicionar arquivo específico**
 git add arquivo.js
-# Adicionar todos os arquivos modificados (cuidado!)
+**Adicionar todos os arquivos modificados (cuidado!)**
 git add .
-# Adicionar interativamente (escolher arquivo por arquivo)
+**Adicionar interativamente (escolher arquivo por arquivo)**
 git add -i
  ``
 
 **COMMITANDO**
 ``
-# Comitando
+**Comitando**
 git commit -m "Descrição breve do que foi feito"
-# Ver o diff antes de commitar
+**Ver o diff antes de commitar**
 git diff
-# Ver o que está em staging
+**Ver o que está em staging**
 git diff --staged
 ``
 
 **NAVEGANDO O HISTÓRICO**
 ``
-# Ver todos os commits
+**Ver todos os commits**
 git log
-# Ver últimos 5 commits
+**Ver últimos 5 commits**
 git log -5
-# Ver de forma compacta (uma linha por commit)
+**Ver de forma compacta (uma linha por commit)**
 git log --oneline
-# Ver histórico de um arquivo específico
+**Ver histórico de um arquivo específico**
 git log arquivo.js
-# Ver o que mudou no último commit
+**Ver o que mudou no último commit**
 git show HEAD (Referência especial: aponta para "você está aqui". Sempre está no commit mais recente da sua branch.)
 ``
 
 **DESFAZENDO MUDANÇAS**
 
 ``
-# Se você editou um arquivo mas NÃO fez commit:
-# Volta ao estado do último commit. Mudanças perdidas.
+**Se você editou um arquivo mas NÃO fez commit:Volta ao estado do último commit. Mudanças perdidas.**
 git restore arquivo.js
 
-# Se você fez add mas NÃO commitou:
-# Remove do staging, mas o arquivo editado fica no seu workspace.
+**Se você fez add mas NÃO commitou: Remove do staging, mas o arquivo editado fica no seu workspace.**
 git restore --staged arquivo.js
 
-# Se você já commitou e quer desfazer:
-# Desfazer último commit, mas manter mudanças no workspace
+**Se você já commitou e quer desfazer: Desfazer último commit, mas manter mudanças no workspace**
 git reset --soft HEAD~1
-# Desfazer último commit e descartar mudanças
+**Desfazer último commit e descartar mudanças**
 git reset --hard HEAD~1
 
 **AVISO: reset --hard é destrutivo. Use com cuidado.**
@@ -106,11 +103,10 @@ git reset --hard HEAD~1
 
 **REPOSITÓRIO REMOTO**
 ``
-# Criar repositório vazio no GitHub
-# (pelo site)
-# Conectar seu repositório local ao remoto
+**Criar repositório vazio no GitHub (pelo site)**
+**Conectar seu repositório local ao remoto**
 git remote add origin <a href="https://github.com/seu-usuario/seu-projeto.git" class="_blanktarget">https://github.com/seu-usuario/seu-projeto.git</a>
-# Verificar remoto configurado
+**Verificar remoto configurado**
 git remote -v
 
 **origin é o nome padrão. Você pode ter múltiplos remotes (ex: origin no GitHub, backup num outro servidor).**
@@ -118,9 +114,9 @@ git remote -v
 
 **PUSH: ENVIANDO PARA GITHUB**
 ``
-# Envia todos os commits da sua branch main para GitHub.
+**Envia todos os commits da sua branch main para GitHub.**
 git push origin main
-# Na primeira vez, use:
+**Na primeira vez, use:**
 git push -u origin main
 
 -u faz Git "rastrear" a branch remota. Próximas vezes, você só digita git push.
@@ -128,10 +124,9 @@ git push -u origin main
 
 **PUSH: ENVIANDO PARA GITHUB**
 ``
-# Envia todos os commits da sua branch main para GitHub.
+**Envia todos os commits da sua branch main para GitHub.**
 git push origin main
-# Na primeira vez, use:
-#  -u faz Git "rastrear" a branch remota. Próximas vezes, você só digita git push.
+**Na primeira vez, use: -u faz Git "rastrear" a branch remota. Próximas vezes, você só digita git push.**
 git push -u origin main
 ``
 
@@ -145,9 +140,9 @@ internamente, Git faz:
 ``
 **VERIFICANDO O STATUS**
 ``
-# Status geral
+**Status geral**
 git status
-# Ver branches locais e remotas
+**Ver branches locais e remotas**
 git branch -a
 ``
 
@@ -155,11 +150,11 @@ git branch -a
 
 **BRANCHES: UNIVERSOS PARALELOS**
 ``
-# Criar nova branch
+**Criar nova branch**
 git branch minha-feature
-# Mudar para a branch
+**Mudar para a branch**
 git checkout minha-feature
-# Atalho: criar e mudar de uma vez
+**Atalho: criar e mudar de uma vez**
 git checkout -b minha-feature
 ``
 
@@ -195,20 +190,20 @@ No GitHub:
 **MERGE: INCORPORANDO MUDANÇAS**
 
 ``
-# Do seu computador
+**Do seu computador**
 git checkout main
 git pull origin main
 git merge minha-feature
-# Ou direto no GitHub (botão "Merge pull request")
+**Ou direto no GitHub (botão "Merge pull request")**
 ``
 
 **SINCRONIZANDO COM MAIN**
 ``
-# Enquanto você trabalha em sua branch, seus colegas fazem commits em main. Para # trazer essas mudanças:
+**Enquanto você trabalha em sua branch, seus colegas fazem commits em main. Para trazer essas mudanças:**
 git fetch origin
 git merge origin/main
 
-# Ou, se preferir rebasear (reorganizar seus commits como se tivesse começado agora):
+**Ou, se preferir rebasear (reorganizar seus commits como se tivesse começado agora):**
 
 git rebase origin/main
 
@@ -253,42 +248,42 @@ dist/
 Aqui está como um dev web trabalha com Git/GitHub no dia a dia:
 
 ``
-# 1. Pegar tarefas nova em main
+1. Pegar tarefas nova em main
 git checkout main
 git pull origin main
 
-# 2. Criar branch para a funcionalidade
+2. Criar branch para a funcionalidade
 git checkout -b feature/formulario-contato
 
-# 3. Editar, testar, commitar
+3. Editar, testar, commitar
 git add .
 git commit -m "feat: adicionar formulário de contato"
 
-# 4. Mais edits, mais commits
+4. Mais edits, mais commits
 git add .
 git commit -m "style: melhorar responsividade do formulário"
 
-# 5. Enviando para GitHub
+5. Enviando para GitHub
 git push -u origin feature/formulario-contato
 
-# 6. Criar PR no GitHub (pelo site)
-# - Descrever mudanças
-# - Pedir review
+6. Criar PR no GitHub (pelo site)
+ - Descrever mudanças
+ - Pedir review
 
-# 7. Colegas revisam, pedem mudanças
-# (Você faz mais commits na mesma branch)
+7. Colegas revisam, pedem mudanças
+(Você faz mais commits na mesma branch)
 git add .
 git commit -m "fix: validação de email conforme feedback"
 git push origin feature/formulario-contato
 
-# 8. Aprovado! Fazer merge (no GitHub)
-# Ou localmente:
+8. Aprovado! Fazer merge (no GitHub)
+Ou localmente:
 git checkout main
 git pull origin main
 git merge feature/formulario-contato
 git push origin main
 
-# 9. Limpar (opcional)
+9. Limpar (opcional)
 git branch -d feature/formulario-contato
 ``
 
@@ -321,7 +316,7 @@ Semantic Versioning é um padrão internacional para versionar código. É simpl
 
 Cada número tem um significado específico e regras bem definidas sobre quando incrementar cada um.
 
-# MAJOR (1.x.x): Mudanças Incompatíveis:
+**MAJOR (1.x.x): Mudanças Incompatíveis:**
 O número MAJOR é incrementado quando você faz mudanças que quebram a compatibilidade com versões anteriores. Se alguém está usando sua aplicação na versão 1.0.0 e você lança a versão 2.0.0, esse alguém vai precisar atualizar seu código para usar a nova versão.
 
 EXEMPLOS:
@@ -331,7 +326,7 @@ EXEMPLOS:
 - Mudou banco de dados de SQL para NoSQL
 - Mudou o comportamento fundamental de uma feature
 
-# MINOR (x.2.x): Novas Funcionalidades Compatíveis:
+**MINOR (x.2.x): Novas Funcionalidades Compatíveis:**
 O número MINOR é incrementado quando você adiciona novas funcionalidades de forma que continua sendo compatível com versões anteriores. Um cliente usando versão 1.0.0 pode atualizar para 1.1.0 sem quebrar nada.
 
 EXEMPLOS:
@@ -340,7 +335,7 @@ EXEMPLOS:
 - Adicionou nova feature de autenticação (OAuth)
 - Adicionou suporte para novo formato de arquivo
 
-# PATCH (x.x.3): Bug Fixes:
+**PATCH (x.x.3): Bug Fixes:**
 O número PATCH é incrementado quando você corrige bugs ou faz otimizações que não afetam a API ou comportamento esperado. Um cliente pode atualizar de 1.2.0 para 1.2.1 com total segurança.
 
 EXEMPLOS:
