@@ -28,22 +28,23 @@
 
 **Dockerfile:** Um Dockerfile é um arquivo de texto que contém instruções para construir uma imagem. É como uma receita.
 
-`
+``
 FROM python:3.9-slim WORKDIR /app COPY . . RUN pip install -r requirements.txt CMD ["python", "app.py"]
-`
+``
 
 **REGISTRY / DOCKER HUB:** Um registry é um repositório centralizado onde imagens são armazenadas e compartilhadas. Docker Hub é o registry público mais popular.
 
-`
+``
 Exemplo: A imagem nginx:latest está no Docker Hub. Qualquer um pode fazer docker run nginx e ela é baixada automaticamente.
-`
+``
 **Fluxo Básico**
 
-`
+``
 1. Você escreve um Dockerfile
 2. docker build cria uma Imagem
 3. docker run executa um Container a partir da imagem
-`
+``
+
 ## 3. ARQUITETURA DOCKER
 
 Docker usa uma arquitetura cliente-servidor:
@@ -52,9 +53,9 @@ Docker usa uma arquitetura cliente-servidor:
 - **Docker Daemon:** Serviço que roda em background e gerencia containers, imagens e recursos
 - **Registry:**Repositório de imagens (Docker Hub, repositórios privados, etc)
 
-`
+``
 **O fluxo é:** você digita um comando no Docker Client, que comunica com o Docker Daemon (o serviço), que por sua vez gerencia os containers em execução e interage com registries quando precisa baixar imagens.
-`
+``
 
 ## 4. Primeiros Passos Práticos
 
@@ -71,15 +72,15 @@ Para acessar no navegador, use a flag -p para mapear portas:
 
 docker run -p 8080:80 nginxS
 
-`
+``
 **O que acontece:**
 1. Docker procura a imagem nginx localmente
 2. Se não encontrar, baixa do Docker Hub
 3. Cria um container a partir da imagem
 4. Executa o container
-`
+``
 
-`
+``
 **COMANDOS ESSENCIAIS**
 
 - **docker run** — Executar container
@@ -92,18 +93,18 @@ docker run -p 8080:80 nginxS
 - **docker stop CONTAINER_ID** — Parar um container
 - **docker rm CONTAINER_ID** — Remover um container
 - **docker rmi IMAGE_ID** — Remover uma imagem
-`
+``
 
 ## Bildando e rodando imagem
 
 **Build a imagem:**
-`
+``
 docker build -t meu-app:1.0 .
-`
+``
 **Executar container**
-`
+``
 docker run -p 5000:5000 meu-app:1.0
-`
+``
 
 ## VOLUME (PERSISTÊNCIA DE DADOS)
 
